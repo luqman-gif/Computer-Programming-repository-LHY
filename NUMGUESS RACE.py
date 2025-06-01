@@ -31,7 +31,7 @@ def play_game():
     guess_range_min = 1
     guess_range_max = 3    # You can change the range to adjust the level of difficulty, make it easier or harder
 
-    #Display game start info
+    # Display game start info
     print(f"\n--- Game Start! ---")
     print(f"{team1_name}: {team1_player1} (guessing), {team1_player2} (moving)")
     print(f"{team2_name}: {team2_player1} (guessing), {team2_player2} (moving)")
