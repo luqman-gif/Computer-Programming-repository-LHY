@@ -10,14 +10,17 @@ def play_game():
     print("Teams will guess a number. Correct guess moves forward,")
     print("two incorrect guesses in a row moves backward.\n")
 
+    # Getting players info for Team 1
     team1_name = input("Enter name for Team 1: ")
     team1_player1 = input(f"Enter name for Player 1 of {team1_name} (the guesser): ")
     team1_player2 = input(f"Enter name for Player 2 of {team1_name} (the mover): ")
 
+    # Getting players info for Team 2
     team2_name = input("Enter name for Team 2: ")
     team2_player1 = input(f"Enter name for Player 1 of {team2_name} (the guesser): ")
     team2_player2 = input(f"Enter name for Player 2 of {team2_name} (the mover): ")
 
+    # Intial team positions and counters for wrong guesses
     team1_position = 0
     team2_position = 0
     team1_consecutive_wrong_guesses = 0
@@ -26,8 +29,9 @@ def play_game():
     winning_score = 5  # You can change this to make the game longer or shorter
     current_turn = 1
     guess_range_min = 1
-    guess_range_max = 3
+    guess_range_max = 3    # You can change the range to adjust the level of difficulty, make it easier or harder
 
+    #Display game start info
     print(f"\n--- Game Start! ---")
     print(f"{team1_name}: {team1_player1} (guessing), {team1_player2} (moving)")
     print(f"{team2_name}: {team2_player1} (guessing), {team2_player2} (moving)")
@@ -55,6 +59,7 @@ def play_game():
                 except ValueError:
                     print("Invalid input. Please enter a whole number.")
 
+            # Check if the guess is correct
             if guess_team1 == secret_number_team1:
                 print(f"Correct! The number was {secret_number_team1}.")
                 team1_position += 1
@@ -73,7 +78,7 @@ def play_game():
             print(f"Current positions: {team1_name}: {team1_position}, {team2_name}: {team2_position}")
 
         if team1_position >= winning_score: # Check win condition after Team 1's move
-            break
+            break   # End the game if team 1 already won
 
         # --- Team 2's Turn ---
         if team1_position < winning_score and team2_position < winning_score: # Check win condition before turn
@@ -110,7 +115,7 @@ def play_game():
             print(f"Current positions: {team1_name}: {team1_position}, {team2_name}: {team2_position}")
 
 
-        current_turn += 1
+        current_turn += 1 # Move on to the next round
 
     # --- Game Over ---
     print("\n--- Game Over! ---")
@@ -123,4 +128,5 @@ def play_game():
         # but it's good for robustness.
         print("The game ended unexpectedly. Please check the scores.")
 
+# Start the game
 play_game()
