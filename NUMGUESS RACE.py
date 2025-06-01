@@ -1,4 +1,5 @@
 import random  # Import random module to generate random numbers for guessing
+# This function controls the entire gameplay of the number guessing race
 
 def play_game():
     """Runs the two-team number guessing game with a range of 1 to 5.
@@ -10,18 +11,24 @@ def play_game():
     print("Teams will guess a number. Correct guess moves forward,")
     print("two incorrect guesses in a row moves backward.\n")
 
+
     # Get team 1 name and player names
     team1_name = input("Enter name for Team 1: ")
     team1_player1 = input(f"Enter name for Player 1 of {team1_name} (the guesser): ")
     team1_player2 = input(f"Enter name for Player 2 of {team1_name} (the mover): ")
+# Get team 2 details: team name, guesser, and mover
 
     # Get team 2 name and player names
     team2_name = input("Enter name for Team 2: ")
     team2_player1 = input(f"Enter name for Player 1 of {team2_name} (the guesser): ")
     team2_player2 = input(f"Enter name for Player 2 of {team2_name} (the mover): ")
+# Initialize positions and wrong guess counters for both teams
 
     # Initialize team positions (starting point 0)
     team1_position = 0
+    team1_position = 0  # Starting position for Team 1
+team2_position = 0  # Starting position for Team 2
+
     team2_position = 0
 
     # Counters to track consecutive wrong guesses for each team
@@ -50,6 +57,8 @@ def play_game():
             print(f"\nIt's {team1_name}'s turn. {team1_player1} is guessing.")
 
             # Randomly generate the secret number for team 1 to guess
+            # Generate a random number for Team 1 to guess
+
             secret_number_team1 = random.randint(guess_range_min, guess_range_max)
             guess_team1 = 0
 
@@ -111,6 +120,8 @@ def play_game():
             # Check if team 2's guess is correct
             if guess_team2 == secret_number_team2:
                 print(f"Correct! The number was {secret_number_team2}.")
+                # Team 2 guessed correctly, increase their position
+
                 team2_position += 1  # Move forward
                 team2_consecutive_wrong_guesses = 0  # Reset wrong guess counter
                 print(f"{team2_player2} moves 1 step forward for {team2_name}!")
